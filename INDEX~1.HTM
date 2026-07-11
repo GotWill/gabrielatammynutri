@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gabriela Tammy — Nutricionista Esportiva e Funcional</title>
+<meta name="description" content="Nutrição esportiva e funcional com acompanhamento próximo, estratégico e individualizado. Perca gordura, ganhe massa muscular e performe melhor nos treinos e nas provas." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#17130E;
+  --ink-soft:#4b433a;
+  --cream:#FBF6EE;
+  --cream-2:#F3E8D6;
+  --orange:#E07B1E;
+  --orange-deep:#BE5E11;
+  --ember:#F5A623;
+  --navy:#2C3A57;
+  --navy-deep:#1D283E;
+  --wa:#25D366;
+  --line:rgba(23,19,14,.14);
+  --shadow:0 24px 60px -28px rgba(29,40,62,.45);
+  --radius:20px;
+  --wrap:1180px;
+  --mono:"Space Mono",ui-monospace,monospace;
+  --disp:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Hanken Grotesk",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+
+/* ---------- Type ---------- */
+h1,h2,h3{font-family:var(--disp);font-weight:800;line-height:1.03;letter-spacing:-.02em}
+.eyebrow{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--orange-deep);display:inline-flex;align-items:center;gap:.7em;font-weight:700;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--orange);display:inline-block}
+.eyebrow.on-dark{color:var(--ember)}
+.eyebrow.on-dark::before{background:var(--ember)}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.7em;font-family:var(--disp);font-weight:700;
+  font-size:1rem;letter-spacing:-.01em;padding:1.05em 1.6em;border-radius:100px;cursor:pointer;
+  border:0;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s;
+  line-height:1;white-space:nowrap;
+}
+.btn svg{width:1.2em;height:1.2em;flex:none}
+.btn-wa{background:var(--ink);color:#fff;box-shadow:0 14px 30px -14px rgba(23,19,14,.7)}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 22px 44px -16px rgba(23,19,14,.75)}
+.btn-wa .dot{width:.55em;height:.55em;border-radius:50%;background:var(--wa);box-shadow:0 0 0 4px rgba(37,211,102,.25)}
+.btn-orange{background:linear-gradient(135deg,var(--ember),var(--orange));color:#fff;box-shadow:0 16px 34px -16px rgba(224,123,30,.9)}
+.btn-orange:hover{transform:translateY(-3px);box-shadow:0 24px 48px -18px rgba(224,123,30,.95)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-3px)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+
+/* ---------- Header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  transition:background .3s,box-shadow .3s,padding .3s;
+  padding:16px 0;
+}
+header.scrolled{background:rgba(251,246,238,.86);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:9px 0}
+body.menu-open{overflow:hidden}
+body.menu-open #hdr{background:var(--cream);box-shadow:0 1px 0 var(--line);backdrop-filter:none}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand img{height:46px;transition:height .3s}
+header.scrolled .brand img{height:38px}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:.83rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--orange);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.nav .btn{padding:.75em 1.15em;font-size:.85rem}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2.5px;background:var(--ink);border-radius:2px;transition:transform .34s cubic-bezier(.5,-.2,.3,1.2),opacity .2s}
+.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(.4)}
+.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.nav-scrim{position:fixed;inset:0;background:rgba(23,19,14,.5);opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s;z-index:70;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.nav-scrim.open{opacity:1;visibility:visible}
+.drawer-cta{display:none}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:148px 0 86px;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-150px;right:-170px;width:580px;height:580px;background:radial-gradient(circle,rgba(245,166,35,.22),transparent 62%);z-index:-1;pointer-events:none}
+.hero::after{content:"";position:absolute;left:-3%;bottom:8%;width:150px;height:120px;background-image:radial-gradient(rgba(224,123,30,.35) 1.5px,transparent 1.5px);background-size:16px 16px;z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:44px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,5.3vw,4.4rem)}
+.hero h1 em{font-style:normal;color:var(--orange-deep);white-space:nowrap}
+.hero p.lead{font-size:1.13rem;color:var(--ink-soft);max-width:34ch;margin-top:22px}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:30px;align-items:center}
+.hero-cred{font-family:var(--mono);font-size:.73rem;letter-spacing:.04em;color:var(--ink-soft);margin-top:26px;display:flex;align-items:center;gap:11px;flex-wrap:wrap;line-height:1.5}
+.hero-cred b{color:var(--ink);font-weight:700}
+.hero-cred .sep{width:5px;height:5px;border-radius:50%;background:var(--orange);flex:none}
+.rating-chip{display:inline-flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:8px 16px 8px 10px;box-shadow:0 14px 30px -14px rgba(29,40,62,.55)}
+.rating-chip .g{width:30px;height:30px;border-radius:50%;background:var(--cream-2);display:grid;place-items:center;font-family:var(--disp);font-weight:800;color:var(--orange-deep)}
+.rating-chip .stars{color:var(--ember);letter-spacing:1px;font-size:.8rem;line-height:1}
+.rating-chip b{font-family:var(--mono);font-size:.95rem}
+.rating-chip small{display:block;font-size:.68rem;color:var(--ink-soft);letter-spacing:.02em}
+
+/* hero visual — cropped portrait in an arch with concentric halo + id card */
+.hero-visual{position:relative;width:100%}
+.portrait-wrap{position:relative;width:min(380px,84vw);margin:0 auto}
+.arch-glow{position:absolute;inset:-36px;border-radius:220px 220px 48px 48px;background:radial-gradient(58% 54% at 50% 40%,rgba(245,166,35,.30),transparent 74%);z-index:0;pointer-events:none}
+.arch-ring{position:absolute;border-radius:212px 212px 42px 42px;z-index:0;pointer-events:none}
+.arch-ring.r1{inset:-11px;border:1.5px solid rgba(224,123,30,.24)}
+.arch-ring.r2{inset:-25px;border:1.5px solid rgba(224,123,30,.12)}
+.portrait{position:relative;z-index:1;width:100%;height:min(475px,105vw);border-radius:190px 190px 34px 34px;overflow:hidden;background:linear-gradient(162deg,#FBF6EE 0%,#F3E8D6 44%,#F6CB8C 100%);box-shadow:0 48px 92px -36px rgba(29,40,62,.5)}
+.portrait .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.5) 1.4px,transparent 1.4px);background-size:20px 20px;opacity:.28;mix-blend-mode:soft-light}
+.portrait img.person{position:absolute;height:100%;top:0;left:-73%;width:auto;max-width:none}
+.id-card{position:absolute;left:-20px;bottom:56px;z-index:3;display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.7);border-radius:16px;padding:13px 22px 13px 16px;box-shadow:0 24px 48px -20px rgba(29,40,62,.55)}
+.id-card .dot{width:15px;height:15px;border-radius:50%;border:4px solid var(--orange);flex:none}
+.id-card .nm{font-family:var(--disp);font-weight:800;font-size:1.06rem;line-height:1.05;color:var(--ink)}
+.id-card .sb{font-size:.79rem;color:var(--ink-soft);margin-top:3px}
+
+/* ruler / precision divider */
+.ruler{height:22px;display:flex;align-items:flex-end;gap:9px;opacity:.5;margin:0 auto;max-width:var(--wrap)}
+.ruler i{display:block;width:1.5px;background:var(--ink);height:8px}
+.ruler i:nth-child(5n+1){height:18px;background:var(--orange)}
+
+/* ---------- Sections ---------- */
+section{position:relative}
+.pad{padding:88px 0}
+.pad-lg{padding:110px 0}
+.center{text-align:center}
+.section-head{max-width:640px;margin:0 auto 52px}
+.section-head.left{margin-left:0}
+.section-head h2{font-size:clamp(2rem,4vw,3.1rem);margin-top:16px}
+.section-head p{color:var(--ink-soft);margin-top:16px;font-size:1.08rem}
+
+/* Problem (navy) */
+.problem{background:var(--navy-deep);color:#fff;overflow:hidden}
+.problem::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(224,123,30,.5),transparent 62%);filter:blur(10px)}
+.problem .dots-tex{position:absolute;left:6%;bottom:8%;width:180px;height:150px;background-image:radial-gradient(rgba(255,255,255,.35) 1.5px,transparent 1.5px);background-size:16px 16px;opacity:.5}
+.problem-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;position:relative;z-index:2}
+.quote-big{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.05;letter-spacing:-.02em}
+.quote-big .q{color:var(--ember)}
+.problem p.muted{color:rgba(255,255,255,.72);margin-top:22px;font-size:1.06rem}
+.good-news{background:linear-gradient(150deg,var(--orange),var(--orange-deep));border-radius:var(--radius);padding:34px 32px;box-shadow:var(--shadow)}
+.good-news .eyebrow{color:#fff}.good-news .eyebrow::before{background:#fff}
+.good-news h3{font-size:1.9rem;color:#fff;margin:10px 0 14px}
+.good-news p{color:rgba(255,255,255,.95);font-size:1.08rem}
+.good-news p b{color:var(--navy-deep)}
+
+/* Deliverables */
+.deliver-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.phone-frame{position:relative;border-radius:26px;overflow:hidden;background:var(--cream-2);box-shadow:var(--shadow);aspect-ratio:4/3.4}
+.phone-frame img{width:100%;height:100%;object-fit:cover}
+.deliver-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.deliver-list li{display:flex;gap:16px;padding:16px 4px;border-bottom:1px solid var(--line)}
+.deliver-list li:last-child{border-bottom:0}
+.deliver-list .tk{flex:none;width:30px;height:30px;border-radius:9px;background:rgba(224,123,30,.14);display:grid;place-items:center;margin-top:2px}
+.deliver-list .tk svg{width:16px;height:16px;stroke:var(--orange-deep)}
+.deliver-list b{font-weight:700}
+.deliver-list span{color:var(--ink-soft)}
+
+/* Positioning strip */
+.strip{background:var(--cream-2);border-radius:var(--radius);padding:40px 44px;display:flex;gap:30px;align-items:center;flex-wrap:wrap;box-shadow:0 20px 50px -34px rgba(29,40,62,.5)}
+.strip .k{flex:none;font-family:var(--disp);font-weight:800;font-size:2.4rem;color:var(--orange-deep);line-height:1}
+.strip p{margin:0;font-size:1.05rem;color:var(--ink-soft);flex:1;min-width:260px}
+.strip p b{color:var(--ink)}
+
+/* Plans */
+.plans{background:radial-gradient(120% 90% at 50% -12%,#2b2119 0%,#17130E 52%,#100c08 100%)}
+.plans .section-head h2,.plans .section-head p{color:#fff}
+.plans .section-head p{color:rgba(255,255,255,.66)}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
+.plan{
+  position:relative;border-radius:26px;padding:40px 34px 34px;color:#fff;
+  background:linear-gradient(180deg,#231d17 0%,#151109 100%);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 44px 90px -46px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.06);
+  display:flex;flex-direction:column;overflow:hidden;isolation:isolate;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s;
+}
+.plan::before{
+  content:"";position:absolute;z-index:-1;top:-84px;left:50%;transform:translateX(-50%);
+  width:74%;height:190px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(245,166,35,.95),rgba(224,123,30,.4) 52%,transparent 74%);
+  filter:blur(24px);opacity:.7;pointer-events:none;
+}
+.plan:hover{transform:translateY(-6px)}
+.plan.feat{border-color:rgba(245,166,35,.42)}
+.plan.feat::before{opacity:1;width:88%;height:210px}
+.plan-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;min-height:22px}
+.plan .tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);line-height:1.35}
+.plan-name{font-family:var(--disp);font-weight:800;font-size:1.5rem;letter-spacing:-.01em;line-height:1.1}
+.plan-desc{color:rgba(255,255,255,.58);font-size:.93rem;margin-top:12px;line-height:1.55}
+.plan-price{margin-top:26px}
+.plan-price .lbl{font-size:.88rem;color:rgba(255,255,255,.55)}
+.plan-price .val{font-family:var(--disp);font-weight:800;font-size:3rem;letter-spacing:-.02em;line-height:1;margin-top:6px;display:flex;align-items:baseline;gap:2px}
+.plan-price .val .per{font-family:var(--body);font-size:1rem;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:0}
+.plan-price .pix{font-family:var(--mono);font-size:.8rem;color:var(--ember);margin-top:10px}
+.plan-div{height:1px;background:rgba(255,255,255,.1);margin:26px 0 24px}
+.plan-feat-title{font-weight:700;font-size:.92rem;color:#fff;margin-bottom:20px}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:15px;flex:1}
+.plan ul li{display:flex;gap:13px;font-size:.91rem;color:rgba(255,255,255,.8);line-height:1.45;align-items:flex-start}
+.plan ul li svg{width:16px;height:16px;flex:none;margin-top:3px;stroke:var(--ember)}
+.plan ul li b{color:#fff;font-weight:600}
+.plan .li-bonus{display:flex;flex:1;min-width:0;gap:6px;align-items:baseline;flex-wrap:wrap}
+.btn-white{margin-top:30px;width:100%;justify-content:center;background:#fff;color:#17130E;box-shadow:0 16px 30px -18px rgba(0,0,0,.7)}
+.btn-white svg{width:1.15em;height:1.15em;fill:#17130E}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 24px 46px -20px rgba(0,0,0,.7)}
+.plan-badge{flex:none;background:linear-gradient(135deg,var(--ember),var(--orange));color:#17130E;font-family:var(--mono);font-size:.57rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;box-shadow:0 8px 20px -8px rgba(224,123,30,.9);white-space:nowrap}
+
+/* Results */
+.results{background:linear-gradient(150deg,var(--cream-2),var(--ember) 130%)}
+.results-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.res-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.res-list li{display:flex;gap:16px;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);border-radius:14px;padding:16px 18px;font-weight:500;backdrop-filter:blur(4px)}
+.res-list .n{font-family:var(--mono);font-weight:700;color:var(--orange-deep);flex:none;font-size:.9rem;min-width:26px}
+.res-photo{border-radius:26px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5}
+.res-photo img{width:100%;height:100%;object-fit:cover}
+
+/* Testimonials */
+.tst-head{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.g-score{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 22px;box-shadow:0 16px 40px -30px rgba(29,40,62,.6)}
+.g-score .big{font-family:var(--disp);font-weight:800;font-size:2.6rem;color:var(--orange-deep);line-height:.9}
+.g-score .stars{color:var(--ember);letter-spacing:2px}
+.g-score small{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tst{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 50px -40px rgba(29,40,62,.7)}
+.tst .top{display:flex;align-items:center;gap:12px}
+.tst .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:var(--disp);font-weight:800;color:#fff;flex:none}
+.tst .who b{display:block;font-size:.95rem}
+.tst .who .stars{color:var(--ember);font-size:.78rem;letter-spacing:1px}
+.tst p{font-size:.94rem;color:var(--ink-soft)}
+.tst .gicon{margin-top:auto;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--ink-soft);display:flex;align-items:center;gap:6px}
+.tst .gicon b{color:#4285F4}
+
+/* About */
+.about{background:var(--navy-deep);color:#fff;overflow:hidden}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.about-media{position:relative}
+.about-media .main{border-radius:24px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5}
+.about-media .main img{width:100%;height:100%;object-fit:cover}
+.about-media .inset{position:absolute;right:-18px;bottom:-24px;width:44%;border-radius:16px;overflow:hidden;border:5px solid var(--navy-deep);box-shadow:var(--shadow)}
+.about-media .credential{position:absolute;left:-16px;top:26px;background:#fff;color:var(--ink);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em}
+.about-media .credential b{display:block;font-family:var(--disp);font-size:1.3rem;color:var(--orange-deep)}
+.about h2{font-size:clamp(2rem,3.6vw,2.9rem);color:#fff}
+.about p{color:rgba(255,255,255,.78);margin-top:18px;font-size:1.05rem}
+.about p .hl{color:#fff;font-weight:600}
+.about-quote{border-left:3px solid var(--ember);padding:6px 0 6px 22px;margin:28px 0;font-family:var(--disp);font-weight:700;font-size:1.35rem;line-height:1.25;color:#fff}
+
+/* Location / info */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:6px}
+.info-card{background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:26px 24px}
+.info-card .ic{width:44px;height:44px;border-radius:12px;background:rgba(224,123,30,.13);display:grid;place-items:center;margin-bottom:16px}
+.info-card .ic svg{width:22px;height:22px;stroke:var(--orange-deep)}
+.info-card h3{font-size:1.2rem}
+.info-card p{color:var(--ink-soft);margin-top:8px;font-size:.96rem}
+
+/* Final CTA */
+.finalcta{background:linear-gradient(140deg,var(--ember),var(--orange) 55%,var(--orange-deep));color:#fff;text-align:center;border-radius:0}
+.finalcta h2{font-size:clamp(2.2rem,4.4vw,3.4rem);color:#fff;max-width:16ch;margin:0 auto}
+.finalcta p{color:rgba(255,255,255,.92);margin:18px auto 30px;max-width:44ch;font-size:1.1rem}
+
+/* Footer */
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:56px 0 30px}
+.foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
+footer img.flogo{height:52px;filter:brightness(0) invert(1);opacity:.95}
+.foot-grid p{max-width:34ch;margin-top:16px;font-size:.92rem}
+.foot-links{display:flex;flex-direction:column;gap:10px;font-size:.9rem}
+.foot-links a:hover{color:#fff}
+.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em}
+
+/* Floating WA */
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:70;display:flex;align-items:center;gap:10px;background:var(--wa);color:#fff;padding:13px 20px 13px 14px;border-radius:100px;font-family:var(--disp);font-weight:700;box-shadow:0 16px 34px -12px rgba(37,211,102,.7);transition:transform .25s,opacity .3s}
+body.menu-open .wa-float{opacity:0;pointer-events:none}
+.wa-float:hover{transform:translateY(-3px) scale(1.02)}
+.wa-float svg{width:26px;height:26px;fill:#fff}
+.wa-float span{font-size:.95rem}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* Responsive */
+@media(max-width:960px){
+  .hero-grid,.problem-grid,.deliver-grid,.results-grid,.about-grid{grid-template-columns:1fr}
+  .hero{padding-top:118px}
+  .hero-visual{max-width:420px;margin:34px auto 6px}
+  .hero h1{font-size:clamp(2.3rem,8vw,3.2rem)}
+  .plan-grid,.tst-grid,.info-grid{grid-template-columns:1fr}
+  .plan.feat{transform:none}
+  .about-media{max-width:420px;margin:0 auto 30px}
+  .nav-links{
+    position:fixed;top:0;right:0;bottom:0;height:100%;
+    width:min(330px,84vw);
+    display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:2px;
+    background:var(--cream);
+    padding:104px 28px 34px;
+    box-shadow:-26px 0 74px -28px rgba(29,40,62,.6);
+    transform:translateX(106%);
+    transition:transform .44s cubic-bezier(.4,0,.2,1);
+    overflow-y:auto;overscroll-behavior:contain;
+  }
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{font-size:1.2rem;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink);padding:16px 4px;border-bottom:1px solid var(--line);opacity:0;transform:translateX(24px);transition:opacity .38s ease,transform .38s cubic-bezier(.2,.8,.2,1)}
+  .nav-links a::after{display:none}
+  .nav-links.open a{opacity:1;transform:none}
+  .nav-links.open a:nth-child(1){transition-delay:.12s}
+  .nav-links.open a:nth-child(2){transition-delay:.18s}
+  .nav-links.open a:nth-child(3){transition-delay:.24s}
+  .nav-links.open a:nth-child(4){transition-delay:.30s}
+  .nav-links.open a:nth-child(5){transition-delay:.36s}
+  .drawer-cta{display:inline-flex;justify-content:center;margin-top:24px;border-bottom:0;opacity:0;transform:translateX(24px);transition:opacity .38s ease,transform .38s;transition-delay:.42s}
+  .nav-links a.drawer-cta,.nav-links a.drawer-cta:hover{color:#fff}
+  .nav-links.open .drawer-cta{opacity:1;transform:none}
+  .nav .btn.desk{display:none}
+  .burger{display:flex;position:relative;z-index:2}
+  .tst-grid{gap:18px}
+}
+@media(max-width:560px){
+  .wrap{padding:0 18px}
+  .pad,.pad-lg{padding:64px 0}
+  .strip{padding:28px 24px}
+  .good-news,.info-card{padding:26px 22px}
+  .plan{padding:34px 22px 28px}
+  .plan-price .val{font-size:2.6rem}
+  .plan-head{flex-wrap:wrap}
+  .plan .li-bonus{flex-direction:column;gap:3px}
+  .wa-float span{display:none}
+  .wa-float{padding:14px}
+  .hero-cta{gap:12px}
+  .hero p.lead{max-width:none}
+  .hero{padding-bottom:48px}
+  .portrait-wrap{width:min(320px,80vw)}
+  .portrait{height:min(400px,100vw)}
+  .arch-glow{inset:-20px}
+  .arch-ring.r1{inset:-9px}
+  .arch-ring.r2{inset:-18px}
+  .id-card{left:4px;bottom:26px;padding:11px 18px 11px 13px}
+  .id-card .nm{font-size:.96rem}
+  .id-card .sb{font-size:.74rem}
+  .about-grid{gap:0}
+  .about-media{margin-bottom:0}
+  .about-media .credential{left:14px;top:16px}
+  .about-media .inset{right:14px;bottom:12px;width:40%}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn,.wa-float{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="#inicio"><img src="https://gabrielatammynutri.my.canva.site/_assets/media/a119c93038025ea4b9c8c969e3bcca7c.png" alt="Gabriela Tammy — Nutricionista Esportiva e Funcional" /></a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#inicio">Início</a>
+      <a href="#planos">Planos</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#sobre">Sobre mim</a>
+      <a href="#local">Atendimento</a>
+      <a class="btn btn-wa drawer-cta" href="https://wa.me/message/BU5K3BXAX6HWC1" target="_blank" rel="noopener"><span class="dot"></span>Agendar consulta</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="nav-scrim" id="navscrim" aria-hidden="true"></div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Nutricionista Esportiva e Funcional</span>
+      <h1 style="margin-top:20px">Chegou a hora de ajustar sua alimentação para o <em>corpo</em> e a <em>performance</em> que você merece</h1>
+      <p class="lead">Se o seu objetivo é perder gordura, ganhar massa muscular ou performar melhor nos treinos e nas provas, você está no lugar certo.</p>
+      <div class="hero-cta">
+        <a class="btn btn-wa" href="https://wa.me/message/BU5K3BXAX6HWC1" target="_blank" rel="noopener"><span class="dot"></span>Quero agendar agora</a>
+      </div>
+      <div class="hero-cred"><b style="color:var(--orange-deep)">★ 5,0</b>&nbsp;145 avaliações no Google<span class="sep"></span><b>Desde 2009</b><span class="sep"></span>Metabologia &amp; Fisiologia (USP)</div>
+    </div>
+    <div class="hero-visual">
+      <div class="portrait-wrap reveal">
+        <div class="arch-glow"></div>
+        <div class="arch-ring r2"></div>
+        <div class="arch-ring r1"></div>
+        <div class="portrait">
+          <div class="dots"></div>
+          <img class="person" src="https://gabrielatammynutri.my.canva.site/_assets/media/ba891d57e55e38756cdec6370b109af3.png" alt="Gabriela Tammy, nutricionista esportiva" />
+        </div>
+        <div class="id-card">
+          <span class="dot"></span>
+          <div>
+            <div class="nm">Gabriela Tammy</div>
+            <div class="sb">Nutrição Esportiva · Funcional</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ruler" aria-hidden="true"></div>
+
+<!-- PROBLEM -->
+<section class="problem pad-lg">
+  <div class="problem-grid wrap">
+    <div class="reveal">
+      <div class="quote-big"><span class="q">“</span>Eu treino, mas não vejo resultado.<span class="q">”</span></div>
+      <p class="muted">Se essa frase já passou pela sua cabeça, saiba que você não está sozinho(a). A maior parte das pessoas que me procuram já tentaram comer menos, cortar carboidrato, fazer jejum, seguir dicas de influenciadores… mas continuam sem ver mudança real no corpo.</p>
+    </div>
+    <div class="good-news reveal">
+      <span class="eyebrow">A boa notícia?</span>
+      <h3>O problema não é você. É a estratégia.</h3>
+      <p>E é exatamente isso que eu vou te ajudar a ajustar — com um acompanhamento <b>próximo, estratégico e individualizado</b>.</p>
+    </div>
+  </div>
+  <div class="dots-tex" aria-hidden="true"></div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="pad-lg">
+  <div class="wrap">
+    <div class="section-head left reveal">
+      <span class="eyebrow">O que está incluso</span>
+      <h2>Você terá acesso a um plano feito sob medida</h2>
+    </div>
+    <div class="deliver-grid">
+      <div class="phone-frame reveal">
+        <img src="https://gabrielatammynutri.my.canva.site/_assets/media/387f26b47bb2f9f5d72fbbdda4217fd1.jpg" alt="App de acompanhamento nutricional Webdiet" />
+      </div>
+      <ul class="deliver-list reveal">
+        <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Plano alimentar individualizado</b> calculado para as suas necessidades.</span></li>
+        <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Lista de substituição de alimentos intuitiva</b> — você saberá qual alimento substitui qual e na quantidade correta.</span></li>
+        <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Avaliação física avançada com ultrassom</b>, garantindo precisão no acompanhamento dos seus resultados (presencial).</span></li>
+        <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Orientações sobre suplementação</b> (se necessário).</span></li>
+        <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Receitas, rituais de saúde</b> e sugestões de marcas.</span></li>
+        <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Suporte por WhatsApp.</b></span></li>
+        <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bônus:</b> 1 retorno online (30 min).</span></li>
+      </ul>
+    </div>
+    <div style="margin-top:44px" class="reveal">
+      <div class="strip">
+        <div class="k">NF</div>
+        <p><b>Atendimento particular, com emissão de nota fiscal</b> para quem deseja solicitar reembolso no plano de saúde. Meu trabalho é personalizado e individualizado, pensado para que você tenha resultados reais com um acompanhamento próximo e estratégico.</p>
+        <a class="btn btn-orange" href="https://wa.me/message/BU5K3BXAX6HWC1" target="_blank" rel="noopener">Entrar em contato</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans pad-lg" id="planos">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="color:var(--ember)">Escolha o melhor plano</span>
+      <h2>Investimento no seu resultado</h2>
+      <p>Analise com calma e veja qual formato faz mais sentido para o momento que você está buscando.</p>
+    </div>
+    <div class="plan-grid">
+      <!-- Plan 1 -->
+      <div class="plan basic reveal">
+        <div class="plan-head"><span class="tag">Consulta avulsa · presencial</span></div>
+        <div class="plan-name">Consulta Individual</div>
+        <p class="plan-desc">Uma consulta presencial de 1h30 com plano alimentar individualizado e avaliação corporal completa por ultrassom.</p>
+        <div class="plan-price">
+          <div class="lbl">A partir de · 1x de</div>
+          <div class="val">R$ 660<span class="per">,00</span></div>
+          <div class="pix">ou R$ 640,00 no Pix</div>
+        </div>
+        <div class="plan-div"></div>
+        <div class="plan-feat-title">O que está incluso:</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>1 consulta (1h30)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Plano Alimentar Individualizado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Avaliação Corporal Completa (incluso ultrassom Bodymetrix)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Orientação do uso de suplementos (quando necessário)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Acesso ao app Webdiet por 30 dias</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div class="li-bonus"><b>Bônus:</b><span>1 retorno online de 30 min (dentro de 30 dias da consulta)</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Plantão de dúvidas às quartas, das 9h às 17h (dentro de 30 dias)</li>
+        </ul>
+        <a class="btn btn-white" href="https://wa.me/message/BU5K3BXAX6HWC1" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2l1.9 5.2L19 9l-5.1 1.8L12 16l-1.9-5.2L5 9l5.1-1.8L12 2zM19 14l.9 2.4L22 17l-2.1.7L19 20l-.9-2.3L16 17l2.1-.6L19 14z"/></svg>
+          Quero agendar
+        </a>
+      </div>
+      <!-- Plan 2 -->
+      <div class="plan feat reveal">
+        <div class="plan-head"><span class="tag">Acompanhamento trimestral · presencial</span><span class="plan-badge">Mais completo</span></div>
+        <div class="plan-name">Acompanhamento Trimestral</div>
+        <p class="plan-desc">Acompanhamento próximo por 4 meses: 3 consultas, reavaliações, check-ins semanais e suporte contínuo por WhatsApp.</p>
+        <div class="plan-price">
+          <div class="lbl">A partir de · 4x de</div>
+          <div class="val">R$ 412<span class="per">,00</span></div>
+          <div class="pix">ou R$ 1.590,00 no Pix</div>
+        </div>
+        <div class="plan-div"></div>
+        <div class="plan-feat-title">O que está incluso:</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>3 consultas (1h a 1h30 cada)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Plano Alimentar Individualizado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>3 Avaliações Corporais Completas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>2 avaliações com Ultrassom Bodymetrix (1ª e 3ª consulta)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Receitas Culinárias</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Orientação do uso de suplementos (quando necessário)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Lista de Compras Geral &amp; Check-ins semanais</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div class="li-bonus"><b>Bônus:</b><span>1 retorno online de 30 min (até 15 dias após o 1º plano)</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div class="li-bonus"><b>Bônus:</b><span>Acesso ao Movie Health (plataforma de treinos no Webdiet)</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Validade de 4 meses · Suporte via WhatsApp no período</li>
+        </ul>
+        <a class="btn btn-white" href="https://wa.me/message/BU5K3BXAX6HWC1" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2l1.9 5.2L19 9l-5.1 1.8L12 16l-1.9-5.2L5 9l5.1-1.8L12 2zM19 14l.9 2.4L22 17l-2.1.7L19 20l-.9-2.3L16 17l2.1-.6L19 14z"/></svg>
+          Quero agendar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results pad-lg">
+  <div class="wrap results-grid">
+    <div class="reveal">
+      <span class="eyebrow">Resultados reais</span>
+      <h2 style="font-size:clamp(2rem,3.8vw,3rem);margin-top:14px">Comigo você vai aprender a comer de forma estratégica para:</h2>
+      <ul class="res-list">
+        <li><span class="n">01</span>Chegar preparado(a) para sua primeira prova de corrida, competição de crossfit, luta ou o que você quiser conquistar no esporte.</li>
+        <li><span class="n">02</span>Ver resultados no espelho, nas roupas e na balança.</li>
+        <li><span class="n">03</span>Sentir mais energia e recuperação nos treinos.</li>
+        <li><span class="n">04</span>Fazer o seu corpo performar como você nunca viu antes.</li>
+        <li><span class="n">05</span>Investir seu dinheiro de forma correta nos suplementos certos.</li>
+      </ul>
+      <a class="btn btn-wa" style="margin-top:26px" href="https://wa.me/message/BU5K3BXAX6HWC1" target="_blank" rel="noopener"><span class="dot"></span>Quero agendar agora</a>
+    </div>
+    <div class="res-photo reveal">
+      <img src="https://gabrielatammynutri.my.canva.site/_assets/media/101c206f88e3fea5af300f2e0ed48e46.jpg" alt="Gabriela Tammy praticando atividade física" />
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="pad-lg" id="depoimentos">
+  <div class="wrap">
+    <div class="tst-head reveal">
+      <div class="section-head left" style="margin:0;max-width:520px">
+        <span class="eyebrow">Depoimentos</span>
+        <h2 style="font-size:clamp(1.9rem,3.6vw,2.8rem)">O que meus pacientes falam sobre o meu trabalho</h2>
+      </div>
+      <div class="g-score">
+        <div class="big">5,0</div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <small>145 avaliações · Google</small>
+        </div>
+      </div>
+    </div>
+    <div class="tst-grid">
+      <div class="tst reveal">
+        <div class="top">
+          <div class="av" style="background:#6C5CE7">M</div>
+          <div class="who"><b>Marcos Passos</b><div class="stars">★★★★★</div></div>
+        </div>
+        <p>“Profissional super dedicada aos seus pacientes, esclarecedora e sempre disponível. Há 1 ano praticamente não conseguia sair do lugar, mesmo fazendo ‘tudo certo’. Fechei a primeira avaliação após início da dieta com resultados incríveis, sem passar fome, e agora de fato fazendo tudo certo sob a orientação da Gabriela. Recomendo fortemente.”</p>
+        <div class="gicon"><b>G</b> Avaliação verificada no Google</div>
+      </div>
+      <div class="tst reveal">
+        <div class="top">
+          <div class="av" style="background:#D63031">L</div>
+          <div class="who"><b>Lucas Paulo Amaral do Rego</b><div class="stars">★★★★★</div></div>
+        </div>
+        <p>“A melhor Nutri que já tive o prazer de ser paciente. Avaliação extremamente completa, muito mais do que só subir em uma balança e mandar um cardápio. A Gabriela faz questão de incluir toda sua rotina e dificuldade dentro do plano de tratamento. Simplesmente espetacular!”</p>
+        <div class="gicon"><b>G</b> Avaliação verificada no Google</div>
+      </div>
+      <div class="tst reveal">
+        <div class="top">
+          <div class="av" style="background:#0984E3">K</div>
+          <div class="who"><b>Kito Aredes</b><div class="stars">★★★★★</div></div>
+        </div>
+        <p>“Dra. Gabriela é sensacional. Sou atleta de crossfit e desde que comecei o plano alimentar específico para o esporte, tenho tido melhoras significativas — na estética, no rendimento e na saúde. Ela detalha a minha dieta em todas as fases de treinamento, inclusive no período competitivo. Nota 10!”</p>
+        <div class="gicon"><b>G</b> Avaliação verificada no Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about pad-lg" id="sobre">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <div class="credential">Formação<b>USP</b>Metabologia &amp; Fisiologia</div>
+      <div class="main"><img src="https://gabrielatammynutri.my.canva.site/_assets/media/a7c0afb9f0cab7be7ac929a1dfb4d09b.png" alt="Gabriela Tammy, nutricionista" /></div>
+      <div class="inset"><img src="https://gabrielatammynutri.my.canva.site/_assets/media/c39d9ce0407540d950f56888f5f2c97d.png" alt="Gabriela Tammy usando o app de acompanhamento" /></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow on-dark">Quem vai te acompanhar</span>
+      <h2 style="margin-top:14px">Oi, eu sou a Gabriela Tammy</h2>
+      <p><span class="hl">Nutricionista desde 2009</span>, pós-graduada em Metabologia e Fisiologia Aplicadas à Atividade Física e Nutrição pela USP e em Nutrição Funcional pela Faculdade VP. Ajudo praticantes de atividade física e atletas a melhorar a composição corporal com uma alimentação estratégica, prática e personalizada — sem radicalismo, sem cortar sua vida social e sem fórmulas prontas.</p>
+      <p>Eu vivo o que eu ensino. Pratico atividade física desde 2006, quando conheci o Jú, meu marido — educador físico e meu grande parceiro de profissão e de vida. Foi ele quem me incentivou a mergulhar na nutrição esportiva, e por isso hoje tenho tanta certeza do poder que uma alimentação bem feita tem sobre a performance, o corpo e a saúde.</p>
+      <div class="about-quote">“Seu corpo só muda quando sua alimentação para de ser aleatória e passa a ser inteligente.”</div>
+      <a class="btn btn-orange" href="https://wa.me/message/BU5K3BXAX6HWC1" target="_blank" rel="noopener">Quero agendar agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION / INFO -->
+<section class="pad-lg" id="local">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Atendimento &amp; informações</span>
+      <h2>Como funciona o atendimento</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>Presencial &amp; online</h3>
+        <p>Consultas presenciais com avaliação corporal por ultrassom Bodymetrix e retornos online. Para saber o endereço e agendar seu horário, fale comigo pelo WhatsApp.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
+        <h3>Nota fiscal &amp; reembolso</h3>
+        <p>Atendimento particular com emissão de nota fiscal para quem deseja solicitar reembolso no plano de saúde.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Plantão de dúvidas</h3>
+        <p>Todas as quartas-feiras, das 9h às 17h, dentro do período do seu plano — além do suporte contínuo por WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="finalcta pad-lg">
+  <div class="wrap reveal">
+    <h2>Vamos ajustar a sua estratégia?</h2>
+    <p>Dê o próximo passo rumo ao corpo que você quer e à performance que você merece. Agende sua consulta agora mesmo.</p>
+    <a class="btn btn-light" href="https://wa.me/message/BU5K3BXAX6HWC1" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7a11.6 11.6 0 0 1-4.8-4.2c-.4-.5-1-1.5-1-2.9 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.3-.1.6.5.8 1 1.3 1.7 1.8.3.2.5.3.7 0l.6-.7c.2-.3.4-.2.6-.1l1.8 1c.2.1.4.2.4.3.1.2.1.7-.1 1.2Z"/></svg>
+      Falar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img class="flogo" src="https://gabrielatammynutri.my.canva.site/_assets/media/a119c93038025ea4b9c8c969e3bcca7c.png" alt="Gabriela Tammy" />
+        <p>Nutrição esportiva e funcional com acompanhamento próximo, estratégico e individualizado.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#planos">Planos</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#sobre">Sobre mim</a>
+        <a href="#local">Atendimento</a>
+        <a href="https://wa.me/message/BU5K3BXAX6HWC1" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Gabriela Tammy · Nutricionista Esportiva e Funcional</span>
+      <span>Nutricionista desde 2009 · CRN</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOAT WA -->
+<a class="wa-float" href="https://wa.me/message/BU5K3BXAX6HWC1" target="_blank" rel="noopener" aria-label="Agendar consulta pelo WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7a11.6 11.6 0 0 1-4.8-4.2c-.4-.5-1-1.5-1-2.9 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.3-.1.6.5.8 1 1.3 1.7 1.8.3.2.5.3.7 0l.6-.7c.2-.3.4-.2.6-.1l1.8 1c.2.1.4.2.4.3.1.2.1.7-.1 1.2Z"/></svg>
+  <span>Agendar consulta</span>
+</a>
+
+<script>
+// ruler ticks
+const ruler=document.querySelector('.ruler');
+if(ruler){for(let i=0;i<60;i++){ruler.appendChild(document.createElement('i'));}}
+// year
+document.getElementById('yr').textContent=new Date().getFullYear();
+// header scroll
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',scrollY>30);});
+// mobile drawer
+const burger=document.getElementById('burger'),nav=document.getElementById('navlinks'),scrim=document.getElementById('navscrim');
+function setMenu(open){
+  nav.classList.toggle('open',open);
+  scrim.classList.toggle('open',open);
+  burger.classList.toggle('open',open);
+  document.body.classList.toggle('menu-open',open);
+  burger.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');
+  burger.setAttribute('aria-expanded',open?'true':'false');
+}
+burger.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+scrim.addEventListener('click',()=>setMenu(false));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false);});
+// reveal
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
